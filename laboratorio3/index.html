@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorio3</title>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        //////////////////// LABORATORIO 3 //////////////////
+
+        function MainTitle() {
+            return (
+                <h1 className="titulo">Popular Dishes</h1>
+            )
+        }
+        function Button() {
+            return (
+                <form action="#">
+                    <button className="button" type="submit">BUY NOW</button>
+                </form>
+
+            )
+        }
+
+        function DishCard(props) {
+
+            <div className="plato" key={props.key}>
+                <img src={props.url} alt={`${props.name}`} className="" />
+                <h3 className="title">{props.name}</h3>
+                <p className="description">{props.description}</p>
+                <p>Not available</p>
+            </div>
+            if (props.isAvailable) {
+                return (
+                    <div className="plato" key={props.key}>
+                        <img src={props.url} alt={`${props.name}`} className="" />
+                        <h3 className="nombre">{props.name}</h3>
+                        <p className="description">{props.description}</p>
+                        <div className="comprar">
+                            <p className="precio">${props.price}.00</p>
+                            <Button />
+                        </div>
+
+                    </div>
+                )
+            } else {
+                return (
+                    <div className="plato" key={props.key}>
+                        <img src={props.url} alt={`${props.name}`} className="" />
+                        <h3 className="nombre">{props.name}</h3>
+                        <p className="description">{props.description}</p>
+                        <p className="notAvailable">Not available</p>
+                    </div>
+                )
+
+            }
+        }
+
+        function MenuOptions() {
+            const dishes = [
+                {
+                    name: "TIRAMISU CAKE",
+                    url: "https://t3.ftcdn.net/jpg/03/28/01/60/240_F_328016079_nUH0w4v1lB4bUrmoIdrn1S68DhlxoDCS.jpg",
+                    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                    price: 10,
+                    isAvailable: false
+                },
+                {
+                    name: "CHIA PUDDING",
+                    url: "https://as1.ftcdn.net/v2/jpg/01/35/36/48/1000_F_135364853_H5ixFlEMlhthu5JoVzNijwbVvsA1OiuV.jpg",
+                    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                    price: 9,
+                    isAvailable: true
+                },
+                {
+                    name: "CHEESECAKE",
+                    url: "https://as2.ftcdn.net/v2/jpg/03/01/97/87/1000_F_301978781_XIKYcMAKlL7zHp5DHwMK2Jt00YPQYY9v.jpg",
+                    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                    price: 12,
+                    isAvailable: true
+                },
+                {
+                    name: "CHOCOLATE CAKE",
+                    url: "https://as2.ftcdn.net/v2/jpg/01/25/44/31/1000_F_125443129_koNQT6B86ZS72fnVg8v6GXdc1nzCtNfU.jpg",
+                    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                    price: 11,
+                    isAvailable: true
+                },
+                {
+                    name: "APPLE PIE",
+                    url: "https://as1.ftcdn.net/v2/jpg/00/57/21/42/1000_F_57214243_6eNNMyucjbtCyM2x5tYLJm2AcBjEM0mI.jpg",
+                    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                    price: 10,
+                    isAvailable: false
+                },
+                {
+                    name: "CARROT CAKE",
+                    url: "https://as2.ftcdn.net/v2/jpg/00/75/43/03/1000_F_75430323_PaBwezntw5lXGe3QuafQHa6k1UIuQLlg.jpg",
+                    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                    price: 12,
+                    isAvailable: true
+                }
+            ];
+            
+            return (
+                <div>
+                    <MainTitle />
+                    <div className="carta">
+                        {dishes.map((dishes, index) => {
+                            return (
+                                <DishCard
+                                    key={index}
+                                    name={dishes.name}
+                                    url={dishes.url}
+                                    description={dishes.description}
+                                    price={dishes.price}
+                                    isAvailable={dishes.isAvailable}
+                                />
+                            )
+                        })}
+                    </div>
+                </div>
+            )
+        }
+        const element_root = <MenuOptions />
+        const root = document.getElementById("root");
+        ReactDOM.render(element_root, root)
+    </script>
+</body>
+
+<!-- Nota: remplazar "development.js" con "production.min.js". segun corresponda -->
+<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<link rel="stylesheet" href="index.css">
+
+</html>
